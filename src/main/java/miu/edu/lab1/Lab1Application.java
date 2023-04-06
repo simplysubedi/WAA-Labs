@@ -11,7 +11,7 @@ public class Lab1Application {
     public static void main(String[] args) {
         SpringApplication.run(Lab1Application.class, args);
     }
-@Bean
+    @Bean
     public ModelMapper modelMapper(){
         return new ModelMapper();
 }

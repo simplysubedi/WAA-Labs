@@ -1,7 +1,6 @@
 package miu.edu.lab1.service.impl;
 
 import miu.edu.lab1.domain.Post;
-import miu.edu.lab1.domain.PostV2;
 import miu.edu.lab1.domain.dto.response.PostDto;
 import miu.edu.lab1.respository.PostRepository;
 import miu.edu.lab1.service.PostService;
@@ -15,13 +14,13 @@ import java.util.List;
 @Service
 public class PostServiceImpl implements PostService {
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
     @Autowired
     ModelMapper modelMapper;
 
     @Override
     public List<PostDto> findAll() {
-        return getDtos(postRepository.findAll());
+        return getDtos((List<Post>) postRepository.findAll());
     }
 
     List<PostDto> getDtos(List<Post> posts) {
@@ -36,9 +35,8 @@ public class PostServiceImpl implements PostService {
         //  return postRepository.findPostById(id);
     }
 
-    @Override
     public void addPost(Post p) {
-        postRepository.addPost(p);
+        postRepository.save(p);
     }
 
     @Override
@@ -48,7 +46,8 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void updatePostById(int id, Post p) {
-        postRepository.updatePostById(id, p);
+        p.setId(id);
+        postRepository.save(p);
     }
 
     @Override
@@ -56,8 +55,4 @@ public class PostServiceImpl implements PostService {
         return postRepository.findPostsByAuthor(author);
     }
 
-    @Override
-    public List<PostV2> findAllV2() {
-        return postRepository.findAllV2();
-    }
 }
