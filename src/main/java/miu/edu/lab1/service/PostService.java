@@ -1,5 +1,6 @@
 package miu.edu.lab1.service;
 
+import miu.edu.lab1.domain.Comment;
 import miu.edu.lab1.domain.Post;
 import miu.edu.lab1.domain.dto.response.PostDto;
 
@@ -17,4 +18,8 @@ public interface PostService {
     void updatePostById(int id, Post p);
 
     List<Post> findPostsByAuthor(String author);
+
+    void addCommentToPostbyPostId(int id, Comment comment);
+
+    List<PostDto> findPostByTitle(String title);
 }

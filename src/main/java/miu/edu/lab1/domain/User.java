@@ -19,8 +19,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     String name;
-    @OneToMany(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
-    @JoinColumn(name="Post_id")
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name="User_id")
     List<Post> posts;
 
 }

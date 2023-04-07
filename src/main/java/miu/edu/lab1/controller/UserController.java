@@ -1,5 +1,6 @@
 package miu.edu.lab1.controller;
 
+import miu.edu.lab1.domain.Post;
 import miu.edu.lab1.domain.User;
 import miu.edu.lab1.domain.dto.response.PostDto;
 import miu.edu.lab1.domain.dto.response.UserDto;
@@ -16,13 +17,14 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public List<UserDto> findAll(@RequestParam(required = false) Integer noOfPosts) {
-        System.out.println(noOfPosts);
-        if (noOfPosts == null) {
+    public List<UserDto> findAll(@RequestParam(required = false) Integer noOfPosts,@RequestParam(required = false)String title) {
+        if (noOfPosts == null&& title==null) {
             return userService.findAll();
-        } else {
+        } else if (noOfPosts==null&&title!=null) {
+            return  userService.findUserByPostTitle(title);
+        } else
             return userService.getPostsOfUser(noOfPosts);
-        }
+
     }
 
     @GetMapping("/{id}")
@@ -31,12 +33,27 @@ public class UserController {
     }
 
     @PostMapping
-    public void addUser(@RequestBody User user) {
+    public String addUser(@RequestBody User user) {
         userService.addUser(user);
+        return "User Added";
     }
 
     @GetMapping("/{id}/posts")
     List<PostDto> getAllPostByUserId(@PathVariable int id) {
         return userService.getAllPostsByUserId(id);
+    }
+//    @GetMapping("/{userId}/posts/{postId}")
+//    List<PostDto> getPostByPostId(@PathVariable int userId,@PathVariable int postId) {
+//        return userService.getPostByPostId(userId,postId);
+//    }
+    @PostMapping("/posts/{id}")
+    String addPostToUserByUserId(@PathVariable int id,@RequestBody Post post){
+        userService.addPostToUserByUserId(id,post);
+        return "Post updated";
+    }
+    @DeleteMapping("/{id}")
+    String deleteUser(@PathVariable int id){
+        userService.deleteUser(id);
+        return "User deleted";
     }
 }

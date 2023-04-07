@@ -1,5 +1,6 @@
 package miu.edu.lab1.service.impl;
 
+import miu.edu.lab1.domain.Post;
 import miu.edu.lab1.domain.User;
 import miu.edu.lab1.domain.dto.response.PostDto;
 import miu.edu.lab1.domain.dto.response.UserDto;
@@ -46,6 +47,25 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> getPostsOfUser(Integer noOfPosts) {
         List<User> users= userRepository.findUserByPostsGreaterThan(noOfPosts);
         return getUserDto(users);
+    }
+
+    @Override
+    public void addPostToUserByUserId(int id, Post post) {
+        User user=userRepository.findById(id).get();
+        List<Post> postList=user.getPosts();
+        postList.add(post);
+        user.setPosts(postList);
+        userRepository.save((user));
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<UserDto> findUserByPostTitle(String title) {
+        return getUserDto(userRepository.findUserByPostTitle(title));
     }
 
 

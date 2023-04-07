@@ -1,6 +1,8 @@
 package miu.edu.lab1.service.impl;
 
+import miu.edu.lab1.domain.Comment;
 import miu.edu.lab1.domain.Post;
+import miu.edu.lab1.domain.User;
 import miu.edu.lab1.domain.dto.response.PostDto;
 import miu.edu.lab1.respository.PostRepository;
 import miu.edu.lab1.service.PostService;
@@ -32,7 +34,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostDto findPostById(int id) {
         return modelMapper.map(postRepository.findPostById(id), PostDto.class);
-        //  return postRepository.findPostById(id);
+
     }
 
     public void addPost(Post p) {
@@ -53,6 +55,21 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> findPostsByAuthor(String author) {
         return postRepository.findPostsByAuthor(author);
+    }
+
+    @Override
+    public void addCommentToPostbyPostId(int id, Comment comment) {
+        Post post=postRepository.findPostById(id);
+        List<Comment> commentList=post.getComments();
+        commentList.add(comment);
+        post.setComments(commentList);
+        postRepository.save(post);
+    }
+
+    @Override
+    public List<PostDto> findPostByTitle(String title) {
+        List<Post> posts=postRepository.findAllByTitle(title);
+        return getDtos(postRepository.findAllByTitle(title));
     }
 
 }

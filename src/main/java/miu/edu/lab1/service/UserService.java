@@ -1,5 +1,6 @@
 package miu.edu.lab1.service;
 
+import miu.edu.lab1.domain.Post;
 import miu.edu.lab1.domain.User;
 import miu.edu.lab1.domain.dto.response.PostDto;
 import miu.edu.lab1.domain.dto.response.UserDto;
@@ -16,4 +17,10 @@ public interface UserService {
     List<PostDto> getAllPostsByUserId(int id);
 
     List<UserDto> getPostsOfUser(Integer noOfPosts);
+
+    void addPostToUserByUserId(int id, Post post);
+
+    void deleteUser(int id);
+
+    List<UserDto> findUserByPostTitle(String title);
 }
