@@ -17,16 +17,14 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public List<UserDto> findAll(@RequestParam(required = false) Integer noOfPosts,@RequestParam(required = false)String title) {
-        if (noOfPosts == null&& title==null) {
+    public List<UserDto> findAll(@RequestParam(required = false) Integer noOfPosts, @RequestParam(required = false) String title) {
+        if (noOfPosts == null && title == null) {
             return userService.findAll();
-        } else if (noOfPosts==null&&title!=null) {
-            return  userService.findUserByPostTitle(title);
-        } else
-            return userService.getPostsOfUser(noOfPosts);
+        } else if (noOfPosts == null && title != null) {
+            return userService.findUserByPostTitle(title);
+        } else return userService.getPostsOfUser(noOfPosts);
 
     }
-
     @GetMapping("/{id}")
     public UserDto findUserById(@PathVariable int id) {
         return userService.findUserById(id);
@@ -37,23 +35,24 @@ public class UserController {
         userService.addUser(user);
         return "User Added";
     }
-
     @GetMapping("/{id}/posts")
     List<PostDto> getAllPostByUserId(@PathVariable int id) {
         return userService.getAllPostsByUserId(id);
     }
-//    @GetMapping("/{userId}/posts/{postId}")
-//    List<PostDto> getPostByPostId(@PathVariable int userId,@PathVariable int postId) {
-//        return userService.getPostByPostId(userId,postId);
-//    }
+
     @PostMapping("/posts/{id}")
-    String addPostToUserByUserId(@PathVariable int id,@RequestBody Post post){
-        userService.addPostToUserByUserId(id,post);
+    String addPostToUserByUserId(@PathVariable int id, @RequestBody Post post) {
+        userService.addPostToUserByUserId(id, post);
         return "Post updated";
     }
+
     @DeleteMapping("/{id}")
-    String deleteUser(@PathVariable int id){
+    String deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
         return "User deleted";
+    }
+    @GetMapping("/getException")
+    String getException()throws Exception{
+        throw new Exception("Exception found");
     }
 }
