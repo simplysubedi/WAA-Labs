@@ -1,7 +1,7 @@
 package miu.edu.lab1.service;
 
 import miu.edu.lab1.domain.Comment;
-import miu.edu.lab1.domain.dto.response.CommentDto;
+import miu.edu.lab1.domain.dto.request.CommentDto;
 
 import java.util.List;
 

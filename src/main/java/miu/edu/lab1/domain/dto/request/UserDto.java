@@ -1,4 +1,4 @@
-package miu.edu.lab1.domain.dto.response;
+package miu.edu.lab1.domain.dto.request;
 
 import lombok.Data;
 import miu.edu.lab1.domain.Post;

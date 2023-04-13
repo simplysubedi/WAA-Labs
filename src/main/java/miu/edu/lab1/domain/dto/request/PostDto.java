@@ -1,8 +1,6 @@
-package miu.edu.lab1.domain.dto.response;
+package miu.edu.lab1.domain.dto.request;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import miu.edu.lab1.domain.Comment;
 
 import java.util.List;

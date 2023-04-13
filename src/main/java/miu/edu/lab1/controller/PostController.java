@@ -2,7 +2,7 @@ package miu.edu.lab1.controller;
 
 import miu.edu.lab1.domain.Comment;
 import miu.edu.lab1.domain.Post;
-import miu.edu.lab1.domain.dto.response.PostDto;
+import miu.edu.lab1.domain.dto.request.PostDto;
 import miu.edu.lab1.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

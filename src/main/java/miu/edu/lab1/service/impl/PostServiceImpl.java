@@ -2,8 +2,7 @@ package miu.edu.lab1.service.impl;
 
 import miu.edu.lab1.domain.Comment;
 import miu.edu.lab1.domain.Post;
-import miu.edu.lab1.domain.User;
-import miu.edu.lab1.domain.dto.response.PostDto;
+import miu.edu.lab1.domain.dto.request.PostDto;
 import miu.edu.lab1.respository.PostRepository;
 import miu.edu.lab1.service.PostService;
 import org.modelmapper.ModelMapper;

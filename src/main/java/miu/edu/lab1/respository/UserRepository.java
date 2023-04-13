@@ -15,4 +15,5 @@ public interface UserRepository extends CrudRepository<User,Integer> {
     @Query("SELECT u FROM User u JOIN u.posts p where p.title=:title")
 
     List<User> findUserByPostTitle(@RequestParam String title);
+    User findByEmail(String email);
 }

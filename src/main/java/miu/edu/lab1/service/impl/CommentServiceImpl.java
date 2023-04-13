@@ -1,7 +1,7 @@
 package miu.edu.lab1.service.impl;
 
 import miu.edu.lab1.domain.Comment;
-import miu.edu.lab1.domain.dto.response.CommentDto;
+import miu.edu.lab1.domain.dto.request.CommentDto;
 import miu.edu.lab1.respository.CommentRepository;
 import miu.edu.lab1.service.CommentService;
 import org.modelmapper.ModelMapper;
