@@ -18,6 +18,7 @@ public class AwesomeUserDetailsService implements UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         var user = userRepo.findByEmail(username);
         var userDetails = new AwesomeUserDetails(user);

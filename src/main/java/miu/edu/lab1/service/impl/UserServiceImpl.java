@@ -1,5 +1,6 @@
 package miu.edu.lab1.service.impl;
 
+import jakarta.transaction.Transactional;
 import miu.edu.lab1.domain.Post;
 import miu.edu.lab1.domain.User;
 import miu.edu.lab1.domain.dto.request.PostDto;

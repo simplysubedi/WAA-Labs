@@ -25,7 +25,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name="User_id")
     List<Post> posts;
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     List<Role>roles;
 
 }
